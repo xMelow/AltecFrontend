@@ -3,7 +3,7 @@
 function HomeScreen() {
     return (
         <div>
-            <h1>Altec Application</h1>
+            <h2>About this Application</h2>
         </div>
     )
 }
