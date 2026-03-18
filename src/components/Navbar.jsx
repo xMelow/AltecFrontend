@@ -3,7 +3,13 @@ function Navbar() {
   return (
     <nav>
         <ul>
-            <li>link 1</li>
+            <li>Labels</li>
+                <ul>
+                    <li>Tspl</li>
+                    <li>Zpl</li>
+                </ul>
+            <li>Printers</li>
+            <li>NiceLabel</li>
         </ul>
     </nav>
   )
