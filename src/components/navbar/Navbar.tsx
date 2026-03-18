@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
+import styles from "./Navbar.module.css"
 
 const links = [
     { name: 'Home', path: '/'},
@@ -19,7 +20,7 @@ export default function Navbar() {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
     return (
-    <nav className="navbar">
+    <nav className={styles.navbar}>
       <ul className="navbar-links">
         {links.map(link => (
           <li

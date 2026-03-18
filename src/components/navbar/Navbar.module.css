@@ -1,0 +1,7 @@
+.navbar {
+  display: flex;
+  height: 56px;
+  padding: 0 1.5rem;
+  background: green;
+  border-bottom: 1px solid #eee;
+}
