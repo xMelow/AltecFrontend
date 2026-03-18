@@ -1,7 +1,7 @@
 export type LabelPreviewRequest = {
     tspl: string
-    showBlockOutline: boolean
-    images: {
+    showBlockOutline?: boolean
+    images?: {
         name: string
         imageInBase64: string
     }
@@ -9,5 +9,5 @@ export type LabelPreviewRequest = {
 
 export type LabelPreviewResponse = {
     labelPreview: string
-    
+
 }
