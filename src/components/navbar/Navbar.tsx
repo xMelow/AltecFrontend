@@ -16,31 +16,36 @@ const links = [
 ]
 
 export default function Navbar() {
-    const location = useLocation()
-    const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const location = useLocation()
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
-    return (
+  return (
     <nav className={styles.navbar}>
-      <ul className="navbar-links">
+      <ul className={styles.navbarLinks}>
         {links.map(link => (
           <li
             key={link.name}
-            className="navbar-item"
+            className={styles.navbarItem}
             onMouseEnter={() => link.children && setOpenDropdown(link.name)}
             onMouseLeave={() => setOpenDropdown(null)}
           >
             <Link
               to={link.path}
-              className={location.pathname === link.path ? 'active' : ''}
+              className={`${styles.link} ${location.pathname === link.path ? styles.active : ''}`}
             >
               {link.name}
             </Link>
 
             {link.children && openDropdown === link.name && (
-              <ul className="dropdown">
+              <ul className={styles.dropdown}>
                 {link.children.map(child => (
                   <li key={child.name}>
-                    <Link to={child.path}>{child.name}</Link>
+                    <Link 
+                    to={child.path}
+                    className={`${styles.link} ${location.pathname === link.path ? styles.active : ''}`}
+                    >
+                      {child.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
