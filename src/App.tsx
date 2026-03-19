@@ -3,7 +3,7 @@ import './App.css'
 import HomeScreen from './pages/HomeScreen'
 import Navbar from './components/navbar/Navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import LabelScreen from './pages/labels'
+import LabelScreen from './pages/labels/LabelScreen'
 
 function App() {
   return (
