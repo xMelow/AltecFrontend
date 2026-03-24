@@ -6,5 +6,4 @@ export type LabelPreviewRequest = {
 
 export type LabelPreviewResponse = {
     labelPreview: string
-
 }

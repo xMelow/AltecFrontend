@@ -1,0 +1,68 @@
+.card {
+  background: white;
+  border: 0.15rem solid #e5e5e5;
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  transition: border-color 0.15s;
+  align-self: stretch;
+  height: fit-content;
+}
+
+.card:hover {
+  border-color: darkcyan;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.printerIcon {
+  width: 2rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  background: #E6F1FB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardTitle {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #111;
+  margin: 0;
+}
+
+.cardSubtitle {
+  font-size: 0.6rem;
+  color: #888;
+  margin: 0.25rem 0 0 0;
+}
+
+.divider {
+  height: 0.1rem;
+  background: #e5e5e5;
+  margin-bottom: 0.5rem;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+}
+
+.label {
+  font-size: 0.6rem;
+  color: #888;
+}
+
+.value {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: #111;
+}

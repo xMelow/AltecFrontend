@@ -4,6 +4,7 @@ import HomeScreen from './pages/HomeScreen'
 import Navbar from './components/navbar/Navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import LabelScreen from './pages/labels/LabelScreen'
+import PrinterScreen from './pages/printer/PrinterScreen'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeScreen />}/>
           <Route path='/labels' element={<LabelScreen />} />
+          <Route path='/printers' element={<PrinterScreen />} />
         </Routes>
       </BrowserRouter>
     </div>
