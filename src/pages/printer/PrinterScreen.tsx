@@ -29,7 +29,7 @@ export default function PrinterScreen() {
     return (
         <div>
             <h2>Printer Screen</h2>
-            <button onClick={discoverPrinters}>Discover printers</button>
+            <button className={styles.button} onClick={discoverPrinters}>Discover printers</button>
             <div className={styles.flexContainer}>
                 <p>{loading ? 'Loading...' : ''}</p>
                 {error && <p className={styles.error}>{error}</p>}
