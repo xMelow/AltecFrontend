@@ -2,21 +2,27 @@ import { useState } from "react"
 import { getPrinters } from "../../api/printers"
 import { Printer } from "../../types/printer"
 import PrinterCard from "../../components/printer/Printer"
+import styles from "./PrinterScreen.module.css"
+
 
 export default function PrinterScreen() {
     const [printers, setPrinters] = useState<Printer[]>()
+    const [loading, setLoading] = useState<boolean>(false)
+    const [error, setError] = useState<string | null>(null)
     
     async function discoverPrinters() {
         const subnets = ["192.168.0.0/24", "192.168.1.0/24"]
-
+        setLoading(true)
+        setError(null)
         try {
             const printers = await getPrinters({
                 subnets: subnets
             })
-            console.log(printers)
             setPrinters(printers.printers)
         } catch (err) {
-            console.error(err)
+            setError("Failed to load printers")
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -24,7 +30,10 @@ export default function PrinterScreen() {
         <div>
             <h2>Printer Screen</h2>
             <button onClick={discoverPrinters}>Discover printers</button>
-            <div>
+            <div className={styles.flexContainer}>
+                <p>{loading ? 'Loading...' : ''}</p>
+                {error && <p className={styles.error}>{error}</p>}
+
                 { printers?.map(el => (
                     <PrinterCard printer={el} key={el.ipAddress} />
                 ))}
