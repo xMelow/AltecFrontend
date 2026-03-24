@@ -8,7 +8,6 @@ function LabelScreen() {
   const [labelPreview, setLabelPreview] = useState<string | null>(null)
   const [showBlockOutline, setBlockOutline] = useState<boolean>(false)
   const [labelImages, setLabelImages] = useState<Record<string, string>>({})
-
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -90,7 +89,6 @@ function LabelScreen() {
           : <p className={styles.placeholder}>Preview will appear here</p>
         }
       </div>
-
     </div>
   </div>
 )

@@ -11,7 +11,7 @@ const links = [
             { name: 'ZPL', path: '/labels/zpl' },
         ]
     },
-    { name: 'Printer', path: '/printer' },
+    { name: 'Printers', path: '/printers' },
     { name: 'NiceLabel', path: '/nicelabel' }
 ]
 
