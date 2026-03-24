@@ -2,8 +2,7 @@ import { useState } from "react"
 import { getLabelPreview } from "../../api/labels"
 import styles from "./labels.module.css"
 
-
-function LabelScreen() {
+export default function LabelScreen() {
   const [labelTspl, setLabelTspl] = useState<string>("")
   const [labelPreview, setLabelPreview] = useState<string | null>(null)
   const [showBlockOutline, setBlockOutline] = useState<boolean>(false)
@@ -46,52 +45,50 @@ function LabelScreen() {
   }
 
   return (
-  <div className={styles.page}>
-    <h2>Label Preview</h2>
+    <div className={styles.page}>
+      <h2>Label Preview</h2>
 
-    <div className={styles.layout}>
-      <div className={styles.editor}>
-        <textarea
-          className={styles.textArea}
-          value={labelTspl}
-          onChange={e => setLabelTspl(e.target.value)}
-          placeholder="Enter TSPL code..."
-          rows={35}
-        />
-        {error && <p className={styles.error}>{error}</p>}
-      </div>
-
-      <div className={styles.settings}>
-        <h2>settings</h2>     
-        <div>
-          <label htmlFor="labelImages">Select images</label>
-          <input type="file" multiple onChange={(e) => handleImageImport(e)} />
-          <label htmlFor="showBlockOutline">Show block outline</label>
-          <input type="checkbox" name="showBlockOutline" id="showBlockOutline" onClick={() => setBlockOutline(!showBlockOutline)}/> 
+      <div className={styles.layout}>
+        <div className={styles.editor}>
+          <textarea
+            className={styles.textArea}
+            value={labelTspl}
+            onChange={e => setLabelTspl(e.target.value)}
+            placeholder="Enter TSPL code..."
+            rows={35}
+          />
+          {error && <p className={styles.error}>{error}</p>}
         </div>
 
-        <button 
-          className={styles.button} 
-          onClick={handlePreview} 
-          disabled={loading}
-        >
-          {loading ? 'Loading...' : 'Preview'}
-        </button>
-      </div>
+        <div className={styles.settings}>
+          <h2>settings</h2>     
+          <div>
+            <label htmlFor="labelImages">Select images</label>
+            <input type="file" multiple onChange={(e) => handleImageImport(e)} />
+            <label htmlFor="showBlockOutline">Show block outline</label>
+            <input type="checkbox" name="showBlockOutline" id="showBlockOutline" onClick={() => setBlockOutline(!showBlockOutline)}/> 
+          </div>
 
-      <div className={styles.preview}>
-        {labelPreview
-          ? <img 
-              className={styles.labelPreview} 
-              src={labelPreview} 
-              alt="Label preview" 
-            />
-          : <p className={styles.placeholder}>Preview will appear here</p>
-        }
+          <button 
+            className={styles.button} 
+            onClick={handlePreview} 
+            disabled={loading}
+          >
+            {loading ? 'Loading...' : 'Preview'}
+          </button>
+        </div>
+
+        <div className={styles.preview}>
+          {labelPreview
+            ? <img 
+                className={styles.labelPreview} 
+                src={labelPreview} 
+                alt="Label preview" 
+              />
+            : <p className={styles.placeholder}>Preview will appear here</p>
+          }
+        </div>
       </div>
     </div>
-  </div>
-)
+  )
 }
-
-export default LabelScreen
