@@ -5,7 +5,7 @@
   padding: 1rem 1.25rem;
   transition: border-color 0.15s;
   align-self: stretch;
-  height: fit-content;
+  height: 10rem;
 }
 
 .card:hover {
