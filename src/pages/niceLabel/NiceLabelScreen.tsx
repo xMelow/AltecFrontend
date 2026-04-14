@@ -17,7 +17,7 @@ export default function NiceLabelScreen() {
 
     async function sendRequest() {
         setLoading(true)
-        setError("");
+        setError("")
 
         if (excelFile == null) {
             setLoading(false)
@@ -28,6 +28,10 @@ export default function NiceLabelScreen() {
             const request = await printSerialNumbers({
                 excelfile: excelFile,
             })
+
+            console.log(request)
+
+            // set request was ok or not
         } catch {
             setError("Failed")
         } finally {
@@ -49,7 +53,7 @@ export default function NiceLabelScreen() {
                         onClick={sendRequest} 
                         disabled={loading}
                     >
-                        {loading ? 'Loading...' : 'Preview'}
+                        {loading ? 'Loading...' : 'Print Labels'}
                     </button>
                 </div>
             </div>
