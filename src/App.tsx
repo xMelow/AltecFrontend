@@ -5,6 +5,7 @@ import Navbar from './components/navbar/Navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import LabelScreen from './pages/labels/LabelScreen'
 import PrinterScreen from './pages/printer/PrinterScreen'
+import NiceLabelScreen from './pages/niceLabel/NiceLabelScreen'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<HomeScreen />}/>
           <Route path='/labels' element={<LabelScreen />} />
           <Route path='/printers' element={<PrinterScreen />} />
+          <Route path='/nicelabel' element={<NiceLabelScreen />} />
         </Routes>
       </BrowserRouter>
     </div>
