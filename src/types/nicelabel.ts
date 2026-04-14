@@ -1,4 +1,5 @@
 
 export type SerialNumberRequest = {
-    excelfile: File
+    excelfile: File,
+    type: string
 } 

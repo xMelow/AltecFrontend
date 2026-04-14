@@ -6,6 +6,7 @@ export default function NiceLabelScreen() {
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<string>("")
     const [excelFile, setExcelFile] = useState<File | null>(null)
+    const [printerType, setPrinterType] = useState<string>("")
 
     function handleExcelImport(e: React.ChangeEvent<HTMLInputElement>) {
         const files = e.target.files
@@ -13,6 +14,10 @@ export default function NiceLabelScreen() {
         if (!files) return
 
         setExcelFile(files[0])
+    }
+
+    function handleSelectPrinterType(e: React.ChangeEvent<HTMLSelectElement>) {
+        setPrinterType(e.target.value)
     }
 
     async function sendRequest() {
@@ -27,11 +32,10 @@ export default function NiceLabelScreen() {
         try {
             const request = await printSerialNumbers({
                 excelfile: excelFile,
+                type: printerType
             })
 
             console.log(request)
-
-            // set request was ok or not
         } catch {
             setError("Failed")
         } finally {
@@ -41,13 +45,24 @@ export default function NiceLabelScreen() {
 
     return (
         <div>
-            <h1>NiceLabel Automations</h1>
+            <h1>NiceLabel SDK</h1>
 
-            <div>
-                <h2>Serie nummers nieuwe printers</h2>
-                <div>
+            <div className={styles.systems}>
+                <div className={styles.systemCard}>
+                    <h2>Serie nummers nieuwe printers</h2>
+
                     <label htmlFor="excelFile">Select Excel File</label> <br />
-                    <input type="file" multiple onChange={(e) => handleExcelImport(e)} />
+                    <input type="file" multiple onChange={(e) => handleExcelImport(e)} /> <br />
+
+                    <label htmlFor="type">Printer Types:</label> <br />
+                    <select name="type" id="type" onChange={(e) => handleSelectPrinterType(e)} >
+                        <option value="ATP-300NL">ATP-300 Pro NL</option>
+                        <option value="ATP-300BT">ATP-300 Pro BT</option>
+                        <option value="ATP-600NL">ATP-600 Pro NL</option>
+                        <option value="ATP-600BT">ATP-600 Pro BT</option>
+                        <option value="ATP-3000">ATP-3000</option>                        
+                    </select> <br />
+
                     <button 
                         className={styles.button} 
                         onClick={sendRequest} 
