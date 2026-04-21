@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import styles from "./navbar/Navbar.module.css"
 
 const links = [
     { name: 'Home', path: '/'},
@@ -20,29 +19,29 @@ export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
   return (
-    <nav className={styles.navbar}>
-      <ul className={styles.navbarLinks}>
+    <nav className="">
+      <ul className="">
         {links.map(link => (
           <li
             key={link.name}
-            className={styles.navbarItem}
+            className=""
             onMouseEnter={() => link.children && setOpenDropdown(link.name)}
             onMouseLeave={() => setOpenDropdown(null)}
           >
             <Link
               to={link.path}
-              className={`${styles.link} ${location.pathname === link.path ? styles.active : ''}`}
+              className=""
             >
               {link.name}
             </Link>
 
             {link.children && openDropdown === link.name && (
-              <ul className={styles.dropdown}>
+              <ul className="">
                 {link.children.map(child => (
                   <li key={child.name}>
                     <Link 
                     to={child.path}
-                    className={`${styles.link} ${location.pathname === link.path ? styles.active : ''}`}
+                    className=""
                     >
                       {child.name}
                     </Link>

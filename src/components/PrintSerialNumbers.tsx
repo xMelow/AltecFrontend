@@ -43,7 +43,7 @@ export default function PrintSerialNumbers() {
     }
     
     return (
-        <div className={styles.systemCard}>
+        <div className="">
             <h2>Serie nummers nieuwe printers</h2>
 
             <label htmlFor="excelFile">Select Excel File</label> <br />
@@ -59,7 +59,7 @@ export default function PrintSerialNumbers() {
             </select> <br />
 
             <button 
-                className={styles.button} 
+                className=""
                 onClick={sendRequest} 
                 disabled={loading}
             >

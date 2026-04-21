@@ -5,7 +5,7 @@ export default function NiceLabelScreen() {
         <div>
             <h1>NiceLabel SDK</h1>
 
-            <div className={styles.systems}>
+            <div className="">
                 <PrintSerialNumbers />
             </div>
         </div>

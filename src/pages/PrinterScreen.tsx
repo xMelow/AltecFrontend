@@ -27,10 +27,10 @@ export default function PrinterScreen() {
     return (
         <div>
             <h2>Printer Screen</h2>
-            <button className={styles.button} onClick={discoverPrinters}>Discover printers</button>
-            <div className={styles.flexContainer}>
+            <button className="" onClick={discoverPrinters}>Discover printers</button>
+            <div className="">
                 <p>{loading ? 'Loading...' : ''}</p>
-                {error && <p className={styles.error}>{error}</p>}
+                {error && <p className="">{error}</p>}
 
                 { printers?.map(el => (
                     <PrinterCard printer={el} key={el.ipAddress} />

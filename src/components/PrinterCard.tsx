@@ -1,5 +1,4 @@
 import { Printer } from "../types/printer";
-import styles from "./printer/PrinterCard.module.css"
 
 type PrinterCardProps = {
     printer: Printer
@@ -7,26 +6,26 @@ type PrinterCardProps = {
 
 export default function PrinterCard({ printer }: PrinterCardProps) {
   return (
-    <div className={styles.card}>
+    <div className="">
 
-      <div className={styles.cardHeader}>
-        <div className={styles.printerIcon}>🖨️</div>
+      <div className="">
+        <div className="">🖨️</div>
         <div>
-          <p className={styles.cardTitle}>{printer.model ?? 'Unknown'}</p>
-          <p className={styles.cardSubtitle}>{printer.dnsName}</p>
+          <p className="">{printer.model ?? 'Unknown'}</p>
+          <p className="">{printer.dnsName}</p>
         </div>
       </div>
 
-      <div className={styles.divider} />
+      <div className="" />
 
-      <div className={styles.row}>
-        <span className={styles.label}>IP Address</span>
-        <span className={styles.value}>{printer.ipAddress}</span>
+      <div className="">
+        <span className="">IP Address</span>
+        <span className="">{printer.ipAddress}</span>
       </div>
 
-      <div className={styles.row}>
-        <span className={styles.label}>Port</span>
-        <span className={styles.value}>{printer.port}</span>
+      <div className="">
+        <span className="">Port</span>
+        <span className="">{printer.port}</span>
       </div>
 
     </div>

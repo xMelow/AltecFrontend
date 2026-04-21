@@ -44,22 +44,22 @@ export default function LabelScreen() {
   }
 
   return (
-    <div className={styles.page}>
+    <div className="">
       <h2>Label Preview</h2>
 
-      <div className={styles.layout}>
-        <div className={styles.editor}>
+      <div className="">
+        <div className="">
           <textarea
-            className={styles.textArea}
+            className=""
             value={labelTspl}
             onChange={e => setLabelTspl(e.target.value)}
             placeholder="Enter TSPL code..."
             rows={35}
           />
-          {error && <p className={styles.error}>{error}</p>}
+          {error && <p className="">{error}</p>}
         </div>
 
-        <div className={styles.settings}>
+        <div className="">
           <h2>settings</h2>     
           <div>
             <label htmlFor="labelImages">Select images</label>
@@ -69,7 +69,7 @@ export default function LabelScreen() {
           </div>
 
           <button 
-            className={styles.button} 
+            className=""
             onClick={handlePreview} 
             disabled={loading}
           >
@@ -77,14 +77,14 @@ export default function LabelScreen() {
           </button>
         </div>
 
-        <div className={styles.preview}>
+        <div className="">
           {labelPreview
             ? <img 
-                className={styles.labelPreview} 
+                className=""
                 src={labelPreview} 
                 alt="Label preview" 
               />
-            : <p className={styles.placeholder}>Preview will appear here</p>
+            : <p className="">Preview will appear here</p>
           }
         </div>
       </div>
