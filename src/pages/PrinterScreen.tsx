@@ -1,9 +1,7 @@
 import { useState } from "react"
-import { getPrinters } from "../../api/printers"
-import { Printer } from "../../types/printer"
-import PrinterCard from "../../components/printer/PrinterCard"
-import styles from "./PrinterScreen.module.css"
-
+import { getPrinters } from "../api/printers"
+import { Printer } from "../types/printer"
+import PrinterCard from "../components/PrinterCard"
 
 export default function PrinterScreen() {
     const [printers, setPrinters] = useState<Printer[]>()

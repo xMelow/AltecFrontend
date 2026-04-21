@@ -1,6 +1,5 @@
 import { useState } from "react"
-import styles from "./PrintSerialNumbers.module.css"
-import { printSerialNumbers } from "../../api/nicelabel"
+import { printSerialNumbers } from "../api/nicelabel"
 
 export default function PrintSerialNumbers() {
     const [loading, setLoading] = useState<boolean>(false)
@@ -42,6 +41,7 @@ export default function PrintSerialNumbers() {
             setLoading(false)
         }
     }
+    
     return (
         <div className={styles.systemCard}>
             <h2>Serie nummers nieuwe printers</h2>

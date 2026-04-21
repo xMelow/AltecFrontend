@@ -1,16 +1,14 @@
-import { useState } from 'react'
-import './App.css'
-import HomeScreen from './pages/HomeScreen'
-import Navbar from './components/navbar/Navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import LabelScreen from './pages/labels/LabelScreen'
-import PrinterScreen from './pages/printer/PrinterScreen'
-import NiceLabelScreen from './pages/niceLabel/NiceLabelScreen'
+import HomeScreen from './pages/HomeScreen'
+import Navbar from './components/Navbar'
+import LabelScreen from './pages/LabelScreen'
+import PrinterScreen from './pages/PrinterScreen'
+import NiceLabelScreen from './pages/NiceLabelScreen'
 
-function App() {
+export default function App() {
   return (
     <div>
-      <h1>Altec Application</h1>
+      <h1>Altec Tools</h1>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -23,5 +21,3 @@ function App() {
     </div>
   )
 }
-
-export default App

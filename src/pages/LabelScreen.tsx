@@ -1,6 +1,5 @@
 import { useState } from "react"
-import { getLabelPreview } from "../../api/labels"
-import styles from "./labels.module.css"
+import { getLabelPreview } from "../api/labels"
 
 export default function LabelScreen() {
   const [labelTspl, setLabelTspl] = useState<string>("")

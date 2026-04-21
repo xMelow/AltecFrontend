@@ -1,5 +1,4 @@
-import PrintSerialNumbers from "../../components/printSerialNumbers/PrintSerialNumbers"
-import styles from "./NiceLabelScreen.module.css"
+import PrintSerialNumbers from "../components/PrintSerialNumbers"
 
 export default function NiceLabelScreen() {
     return (

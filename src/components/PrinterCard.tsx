@@ -1,5 +1,5 @@
-import { Printer } from "../../types/printer";
-import styles from "./PrinterCard.module.css"
+import { Printer } from "../types/printer";
+import styles from "./printer/PrinterCard.module.css"
 
 type PrinterCardProps = {
     printer: Printer

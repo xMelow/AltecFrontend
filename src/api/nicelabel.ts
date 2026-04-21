@@ -1,6 +1,5 @@
 import { SerialNumberRequest } from "../types/nicelabel";
 
-
 export async function printSerialNumbers(body: SerialNumberRequest) {
     const formData = new FormData()
     formData.append('excelFile', body.excelfile)
