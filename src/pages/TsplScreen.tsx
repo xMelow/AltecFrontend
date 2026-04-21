@@ -1,11 +1,14 @@
 import { useState } from "react"
 import { getLabelPreview } from "../api/labels"
 
-export default function LabelScreen() {
+export default function TsplScreen() {
+  // result and param needed
   const [labelTspl, setLabelTspl] = useState<string>("")
   const [labelPreview, setLabelPreview] = useState<string | null>(null)
   const [showBlockOutline, setBlockOutline] = useState<boolean>(false)
   const [labelImages, setLabelImages] = useState<Record<string, string>>({})
+
+  // request and response handling
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
 
