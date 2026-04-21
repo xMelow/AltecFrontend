@@ -1,2 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --color-altec-teal: #008896;
+  --color-altec-light: #F0F7F8;
+  --color-altec-dark: #1A1A2E;
+  --color-altec-white: #ffffff;
+  --color-altec-gray: #f5f5f7;
+}
