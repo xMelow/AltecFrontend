@@ -1,9 +1,9 @@
 import PrintSerialNumbers from "../components/PrintSerialNumbers"
 
-export default function NiceLabelScreen() {
+export default function AutomationsScreen() {
     return (
         <div>
-            <h1>NiceLabel SDK</h1>
+            <h1>Automations</h1>
 
             <div className="">
                 <PrintSerialNumbers />

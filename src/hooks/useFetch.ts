@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export function useApi<T>() {
+export function useFetch<T>() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [result, setResult] = useState<T>()

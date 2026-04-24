@@ -5,7 +5,7 @@ const links = [
     {name: 'Home', path: '/'},
     {name: 'TSPL', path: '/tspl'},
     {name: 'Printers', path: '/printers'},
-    {name: 'NiceLabel', path: '/nicelabel'}
+    {name: 'Automations', path: '/automations'}
 ]
 
 export default function Navbar() {
