@@ -1,65 +1,63 @@
 import { useState } from "react"
 import { printSerialNumbers } from "../api/nicelabel"
+import { useFetch } from "../hooks/useFetch";
+import { SerialNumberRequest } from "../types/nicelabel";
 
 export default function PrintSerialNumbers() {
-    const [loading, setLoading] = useState<boolean>(false)
-    const [error, setError] = useState<string>("")
     const [excelFile, setExcelFile] = useState<File | null>(null)
     const [printerType, setPrinterType] = useState<string>("")
-
-    function handleExcelImport(e: React.ChangeEvent<HTMLInputElement>) {
-        const files = e.target.files
-
-        if (!files) return
-
-        setExcelFile(files[0])
-    }
-
-    function handleSelectPrinterType(e: React.ChangeEvent<HTMLSelectElement>) {
-        setPrinterType(e.target.value)
-    }
+    const {loading, error, result, execute} = useFetch<SerialNumberRequest>()
 
     async function sendRequest() {
-        setLoading(true)
-        setError("")
+        if (excelFile == null) return
 
-        if (excelFile == null) {
-            setLoading(false)
-            return
-        }
-
-        try {
-            const request = await printSerialNumbers({
-                excelfile: excelFile,
-                type: printerType
-            })
-
-            console.log(request)
-        } catch {
-            setError("Failed")
-        } finally {
-            setLoading(false)
-        }
+        await execute(() => printSerialNumbers({
+            excelFile: excelFile,
+            type: printerType
+        }))
     }
     
     return (
-        <div className="">
-            <h2>Serie nummers nieuwe printers</h2>
+        <div className="border border-altec-teal py-2 rounded-xl p-2 bg-altec-white w-1/4">
+            <h2 className="text-xl font-semibold pt-2 mb-2">Serie nummers nieuwe printers</h2>
 
-            <label htmlFor="excelFile">Select Excel File</label> <br />
-            <input type="file" multiple onChange={(e) => handleExcelImport(e)} /> <br />
+            <hr className="border-b border-altec-teal mb-4" />
 
-            <label htmlFor="type">Printer Types:</label> <br />
-            <select name="type" id="type" onChange={(e) => handleSelectPrinterType(e)} >
-                <option value="ATP-300NL">ATP-300 Pro NL</option>
-                <option value="ATP-300BT">ATP-300 Pro BT</option>
-                <option value="ATP-600NL">ATP-600 Pro NL</option>
-                <option value="ATP-600BT">ATP-600 Pro BT</option>
-                <option value="ATP-3000">ATP-3000</option>                        
-            </select> <br />
+            {error && <p className="text-red-500">{error}</p>}
+
+            <div className="flex flex-col gap-2">
+                <label
+                    className=" w-27 cursor-pointer bg-altec-teal text-white px-3 py-1.5 rounded-xl"
+                    htmlFor="excelFile"
+                >
+                    Select excel
+                </label>
+
+                <input
+                    id="excelFile"
+                    type="file"
+                    accept={".xlsx"}
+                    multiple
+                    className="hidden"
+                    onChange={(e) => setExcelFile(e.target.files?.[0] ?? null)}
+                />
+
+                <p>{excelFile?.name}</p>
+            </div>
+
+            <div className="flex gap-2">
+                <label htmlFor="type">Printer Type:</label>
+                <select className="" name="type" id="type" onChange={(e) =>setPrinterType(e.target.value)} >
+                    <option value="ATP-300NL">ATP-300 Pro NL</option>
+                    <option value="ATP-300BT">ATP-300 Pro BT</option>
+                    <option value="ATP-600NL">ATP-600 Pro NL</option>
+                    <option value="ATP-600BT">ATP-600 Pro BT</option>
+                    <option value="ATP-3000">ATP-3000</option>
+                </select>
+            </div>
 
             <button 
-                className=""
+                className="w-full border bg-altec-teal text-altec-white p-1.5 rounded-xl mt-2"
                 onClick={sendRequest} 
                 disabled={loading}
             >
