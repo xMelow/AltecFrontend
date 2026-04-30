@@ -1,41 +1,37 @@
-import { useState } from "react"
 import { getPrinters } from "../api/printers"
-import { Printer } from "../types/printer"
+import {PrinterResponse} from "../types/printer"
 import PrinterCard from "../components/PrinterCard"
+import {useFetch} from "../hooks/useFetch";
 
 export default function PrinterScreen() {
-    const [printers, setPrinters] = useState<Printer[]>()
-    const [loading, setLoading] = useState<boolean>(false)
-    const [error, setError] = useState<string | null>(null)
+    const {loading, error, result, execute} = useFetch<PrinterResponse>()
     
     async function discoverPrinters() {
         const subnets = ["192.168.0.0/24", "192.168.1.0/24"]
-        setLoading(true)
-        setError(null)
-        try {
-            const printers = await getPrinters({
-                subnets: subnets
-            })
-            setPrinters(printers.printers)
-        } catch (err) {
-            setError("Failed to load printers")
-        } finally {
-            setLoading(false)
-        }
+
+        await execute(() => getPrinters({
+            subnets: subnets
+        }))
     }
 
     return (
-        <div>
-            <h2>Printer Screen</h2>
-            <button className="" onClick={discoverPrinters}>Discover printers</button>
-            <div className="">
-                <p>{loading ? 'Loading...' : ''}</p>
-                {error && <p className="">{error}</p>}
+        <div className="">
+            <h2 className="text-center text-3xl font-bold text-altec-teal mb-3">Printers</h2>
 
-                { printers?.map(el => (
+            {error && <p className="text-red-500">{error}</p>}
+
+            <div className="flex flex-row justify-center flex-wrap gap-4">
+                {result?.printers?.map(el => (
                     <PrinterCard printer={el} key={el.ipAddress} />
                 ))}
             </div>
+
+            <button
+                className="border bg-altec-teal text-altec-white p-1.5 rounded-xl mt-2"
+                onClick={discoverPrinters}
+            >
+                {loading && loading ? "Loading..." : "Search Printers"}
+            </button>
         </div>
     )
 }
