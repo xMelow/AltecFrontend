@@ -8,7 +8,8 @@ export type PrinterResponse = {
 
 export type Printer = {
     dnsName: string,
+    shortDnsName: string,
     ipAddress: string,
-    model: string,
+    printerModel: string,
     port: number,
 }

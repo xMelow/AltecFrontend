@@ -1,4 +1,4 @@
-import { Printer, PrinterRequest, PrinterResponse } from "../types/printer"
+import { PrinterRequest, PrinterResponse } from "../types/printer"
 
 export async function getPrinters(data: PrinterRequest): Promise<PrinterResponse> {
     const params = new URLSearchParams()
