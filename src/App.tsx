@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import TsplScreen from './pages/TsplScreen'
 import PrinterScreen from './pages/PrinterScreen'
 import AutomationsScreen from './pages/AutomationsScreen'
+import PrinterDetailedScreen from "./pages/PrinterDetailedScreen";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
                       <Route path='/tspl' element={<TsplScreen />} />
                       <Route path='/printers' element={<PrinterScreen />} />
                       <Route path='/automations' element={<AutomationsScreen />} />
+                      <Route path='/printers/:ipAddress' element={<PrinterDetailedScreen />} />
                   </Routes>
               </main>
             </div>
