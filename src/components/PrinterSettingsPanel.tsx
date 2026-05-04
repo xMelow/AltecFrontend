@@ -7,7 +7,7 @@ type SettingsRowProps = {
     ipAddress: string | undefined
 }
 
-export default function SettingsRow({ipAddress}: SettingsRowProps) {
+export default function PrinterSettingsPanel({ipAddress}: SettingsRowProps) {
     const settingsFetch = useFetch<PrinterSettings>()
     const settings = settingsFetch.result
 

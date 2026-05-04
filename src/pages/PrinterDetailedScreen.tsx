@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { sendPrinterCommand } from "../api/printers"
 import { CommandTab, LogEntry } from "../types/printerTerminal"
 import { TSPL_COMMAND_GROUPS, DIAGTOOL_COMMAND_GROUPS } from "../constants/printerCommands"
-import SettingsRow from "../components/SettingsRow";
+import PrinterSettingsPanel from "../components/PrinterSettingsPanel";
 
 export default function PrinterDetailedScreen() {
     const { ipAddress } = useParams<{ ipAddress: string }>()
@@ -12,6 +12,7 @@ export default function PrinterDetailedScreen() {
     const [sending, setSending] = useState(false)
     const [commandTab, setCommandTab] = useState<CommandTab>("diagtool")
     const logEndRef = useRef<HTMLDivElement>(null)
+    const activeGroups = commandTab === "tspl" ? TSPL_COMMAND_GROUPS : DIAGTOOL_COMMAND_GROUPS
 
     useEffect(() => {
         logEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -23,12 +24,11 @@ export default function PrinterDetailedScreen() {
     }
 
     async function sendCommand(command: string) {
-        const trimmed = command.trim()
-        if (!ipAddress || !trimmed) return
-        addLog("sent", trimmed)
+        if (!ipAddress) return
+        addLog("sent", command)
         setSending(true)
         try {
-            const res = await sendPrinterCommand(ipAddress, trimmed)
+            const res = await sendPrinterCommand(ipAddress, command)
             if (res.response) addLog("received", res.response)
         } catch (err) {
             addLog("error", err instanceof Error ? err.message : "Failed to send command")
@@ -41,7 +41,7 @@ export default function PrinterDetailedScreen() {
         const trimmed = commandInput.trim()
         if (!ipAddress || !trimmed) return
         setCommandInput("")
-        await sendCommand(commandInput)
+        await sendCommand(trimmed)
     }
 
     function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
@@ -50,8 +50,6 @@ export default function PrinterDetailedScreen() {
             handleSend()
         }
     }
-
-    const activeGroups = commandTab === "tspl" ? TSPL_COMMAND_GROUPS : DIAGTOOL_COMMAND_GROUPS
 
     return (
         <div>
@@ -161,14 +159,14 @@ export default function PrinterDetailedScreen() {
                         <button
                             className="border bg-altec-teal text-altec-white px-4 rounded-xl self-stretch disabled:opacity-50"
                             onClick={handleSend}
-                            disabled={sending || !commandInput.trim()}
+                            disabled={sending || !ipAddress}
                         >
                             {sending ? "..." : "Send"}
                         </button>
                     </div>
                 </div>
 
-                <SettingsRow ipAddress={ipAddress} />
+                <PrinterSettingsPanel ipAddress={ipAddress} />
 
             </div>
         </div>
