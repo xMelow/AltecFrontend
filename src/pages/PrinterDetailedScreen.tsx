@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import { sendPrinterCommand } from "../api/printers"
 import { CommandTab, LogEntry } from "../types/printerTerminal"
 import { TSPL_COMMAND_GROUPS, DIAGTOOL_COMMAND_GROUPS } from "../constants/printerCommands"
