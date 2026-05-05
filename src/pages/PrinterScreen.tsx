@@ -55,6 +55,7 @@ export default function PrinterScreen() {
                 <div className="flex gap-2">
                     <button
                         className="border bg-altec-teal text-altec-white p-1.5 rounded-xl"
+                        disabled={true}
                         onClick={discoverPrinters}
                     >
                         {loading ? "Loading..." : "Search Printers"}
