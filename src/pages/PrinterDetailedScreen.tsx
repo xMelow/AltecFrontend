@@ -29,7 +29,8 @@ export default function PrinterDetailedScreen() {
         setSending(true)
         try {
             const res = await sendPrinterCommand(ipAddress, command)
-            if (res.response) addLog("received", res.response)
+            if (res.result) addLog("received", res.result)
+            // setSending(false)
         } catch (err) {
             addLog("error", err instanceof Error ? err.message : "Failed to send command")
         } finally {
@@ -130,7 +131,6 @@ export default function PrinterDetailedScreen() {
                         )}
                         {log.map((entry, i) => (
                             <div key={i} className="mb-1 leading-snug">
-                                <span className="text-gray-400 text-xs mr-2 select-none">{entry.timestamp}</span>
                                 {entry.type === "sent" && (
                                     <span className="text-altec-teal font-semibold">&gt; {entry.text}</span>
                                 )}

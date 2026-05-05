@@ -15,43 +15,33 @@ export type Printer = {
 }
 
 export type PrinterSettings = {
-    ipAddress: string
-    printerModel: string
-    dnsName: string
-    shortDnsName: string
-    port: number
-    firmwareVersion?: string
-    serialNumber?: string
-    resolution?: string
-    printSpeed?: string
-    printDensity?: string
-    labelType?: string
-    mediaType?: string
-    cuts?: string
+    dpi: number,
+    model: string,
+    serial: string,
+    version: string,
+    mileage: string,
+    labelCounter: number,
+    macAddressNet: string,
+    ipAddressNet: string,
+    networkName: string,
+    sensorType: string,
+    speed: number,
+    density: number,
+    labelWidth: string,
+    labelHeight: string,
+    gapSize: string,
+    gapSizeOffset: string,
+    blineSize: number,
+    direction: string,
+    ribbon: string,
+    offset: number,
+    shiftX: number,
+    shiftY: number,
+    countryCode: string,
+    codePage: string,
+    gapOffset: number,
 }
 
 export type CommandResponse = {
-    response: string
-    success: boolean
-}
-
-export type PrinterSettings = {
-    ipAddress: string
-    printerModel: string
-    dnsName: string
-    shortDnsName: string
-    port: number
-    firmwareVersion?: string
-    serialNumber?: string
-    resolution?: string
-    printSpeed?: string
-    printDensity?: string
-    labelType?: string
-    mediaType?: string
-    cuts?: string
-}
-
-export type CommandResponse = {
-    response: string
-    success: boolean
+    result: string
 }
